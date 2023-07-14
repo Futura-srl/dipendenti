@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_partner_view_form_update" model="ir.ui.view">
+        <field name="name">res.partner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="hr.res_partner_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <field name="has_matching_employee" invisible="True"/>
+                <button name="action_open_employees" type="object" class="oe_stat_button" icon="fa-id-card-o"
+                        attrs="{'invisible': [('has_matching_employee', '=', 0)]}"
+                        string="Dipendenti">
+                    <div class="o_field_widget o_stat_info">
+                        <field name="has_matching_employee" />
+                        <span class="o_stat_text">Dipendenti</span>
+                    </div>
+                    <field name="id" invisible="1"/>
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="access_code_employee"/>
+            </xpath>
+        </field>
+    </record>
+
+
+
+</odoo>

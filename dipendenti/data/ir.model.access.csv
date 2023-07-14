@@ -1,0 +1,7 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_employee,access_hr_employee,model_hr_employee,base.group_user,1,1,1,1
+access_pwork_setting,access_pwork_setting,model_pwork_setting,base.group_user,1,1,1,1
+access_import_data,access_import_data,model_import_data,base.group_user,1,1,1,1
+access_fleet_vehicle,access_fleet_vehicle,model_fleet_vehicle,base.group_user,1,1,1,1
+access_hr_interinale,access_hr_interinale,model_hr_interinale,base.group_user,1,1,1,1
+

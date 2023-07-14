@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_interinale" model="ir.actions.act_window">
+        <field name="name">Dipendenti interinale</field>
+        <field name="res_model">hr.interinale</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <!-- Relativo alla visualizzazione della tabella ad alberlo -->
+    <record id="hr_interinale_views_tree" model="ir.ui.view">
+        <field name="name">Dipendenti interinale</field>
+        <field name="model">hr.interinale</field>
+        <field name="arch" type="xml">
+            <tree string="Dipendenti interinale" editable="bottom">
+                <field name="name"/>
+                <field name="res_company_id"/>
+                <field name="res_partner_id"/>
+            </tree>
+        </field>
+    </record>
+
+
+</odoo>

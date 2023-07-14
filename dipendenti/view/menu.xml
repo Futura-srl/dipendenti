@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- MENU ROOT -->
+
+
+
+    <!-- MENU PRIMO LIVELLO -->
+
+    <menuitem id="hr_interinale_first_level_menu"
+    name="Interinale"
+    parent="hr.menu_hr_root"/>
+
+
+    <!-- MENU ACTION -->
+
+    <menuitem id="hr_interinale_movimentazione_menu_action"
+    action="hr_interinale"
+    parent="hr_interinale_first_level_menu"
+    name="Gestione aziende interinali"/>
+
+
+</odoo>

@@ -1,0 +1,213 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* Dipendenti
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-10 13:35+0000\n"
+"PO-Revision-Date: 2023-07-10 13:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: Dipendenti
+#: model_terms:ir.ui.view,arch_db:Dipendenti.res_partner_view_form_update
+msgid "<span class=\"o_stat_text\">Employee(s)</span>"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields.selection,name:Dipendenti.selection__fleet_vehicle__stato_veicolo__attivo
+msgid "ATTIVO"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_interinale__res_company_id
+msgid "Azienda interna collegata"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model,name:Dipendenti.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_interinale__res_partner_id
+msgid "Contatto azienda interinale"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_interinale__create_uid
+#: model:ir.model.fields,field_description:Dipendenti.field_import_data__create_uid
+#: model:ir.model.fields,field_description:Dipendenti.field_pwork_setting__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_interinale__create_date
+#: model:ir.model.fields,field_description:Dipendenti.field_import_data__create_date
+#: model:ir.model.fields,field_description:Dipendenti.field_pwork_setting__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.actions.act_window,name:Dipendenti.hr_interinale
+#: model_terms:ir.ui.view,arch_db:Dipendenti.hr_interinale_views_tree
+msgid "Dipendenti interinale"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model,name:Dipendenti.model_hr_interinale
+msgid "Dipendenti interinali"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_interinale__display_name
+#: model:ir.model.fields,field_description:Dipendenti.field_import_data__display_name
+#: model:ir.model.fields,field_description:Dipendenti.field_pwork_setting__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: Dipendenti
+#: model:ir.model,name:Dipendenti.model_hr_employee
+msgid "Employee"
+msgstr "Dipendente"
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_res_partner__access_code_employee
+#: model:ir.model.fields,field_description:Dipendenti.field_res_users__access_code_employee
+msgid "Employee password"
+msgstr "Password Dipendente"
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_fleet_vehicle__euro
+msgid "Euro"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_employee__first_name
+#: model:ir.model.fields,field_description:Dipendenti.field_res_partner__first_name
+#: model:ir.model.fields,field_description:Dipendenti.field_res_users__first_name
+msgid "First Name"
+msgstr "Nome"
+
+#. module: Dipendenti
+#: model:ir.ui.menu,name:Dipendenti.hr_interinale_movimentazione_menu_action
+msgid "Gestione aziende interinali"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_res_partner__has_matching_employee
+#: model:ir.model.fields,field_description:Dipendenti.field_res_users__has_matching_employee
+msgid "Has Matching Employee"
+msgstr "Dipendenti corrispondenti"
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_interinale__id
+#: model:ir.model.fields,field_description:Dipendenti.field_import_data__id
+#: model:ir.model.fields,field_description:Dipendenti.field_pwork_setting__id
+msgid "ID"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields.selection,name:Dipendenti.selection__fleet_vehicle__stato_veicolo__in_arrivo
+msgid "IN ARRIVO"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields.selection,name:Dipendenti.selection__fleet_vehicle__stato_veicolo__incidentato
+msgid "INCIDENTATO"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model,name:Dipendenti.model_import_data
+msgid "Importazione dati"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_employee__interinale
+#: model:ir.ui.menu,name:Dipendenti.hr_interinale_first_level_menu
+msgid "Interinale"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_interinale____last_update
+#: model:ir.model.fields,field_description:Dipendenti.field_import_data____last_update
+#: model:ir.model.fields,field_description:Dipendenti.field_pwork_setting____last_update
+msgid "Last Modified on"
+msgstr "Ultima modifica il"
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_employee__last_name
+#: model:ir.model.fields,field_description:Dipendenti.field_res_partner__last_name
+#: model:ir.model.fields,field_description:Dipendenti.field_res_users__last_name
+msgid "Last Name"
+msgstr "Cognome"
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_interinale__write_uid
+#: model:ir.model.fields,field_description:Dipendenti.field_import_data__write_uid
+#: model:ir.model.fields,field_description:Dipendenti.field_pwork_setting__write_uid
+msgid "Last Updated by"
+msgstr "Ultimo aggiornamento da"
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_interinale__write_date
+#: model:ir.model.fields,field_description:Dipendenti.field_import_data__write_date
+#: model:ir.model.fields,field_description:Dipendenti.field_pwork_setting__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_interinale__name
+msgid "Nome azienda interinale"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_import_data__number_data_import
+msgid "Number Data Import"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_employee__pwork_azienda_id
+msgid "Pwork Azienda"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_employee__pwork_cf
+msgid "Pwork Cf"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_hr_employee__pwork_dipendente_id
+msgid "Pwork Dipendente"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model,name:Dipendenti.model_pwork_setting
+msgid "Pwork setting"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields.selection,name:Dipendenti.selection__fleet_vehicle__stato_veicolo__restituito
+msgid "RESTITUITO"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_fleet_vehicle__stato_veicolo
+msgid "Stato Veicolo"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model.fields,field_description:Dipendenti.field_pwork_setting__token
+msgid "Token"
+msgstr ""
+
+#. module: Dipendenti
+#: model:ir.model,name:Dipendenti.model_fleet_vehicle
+msgid "Vehicle"
+msgstr "Veicolo"

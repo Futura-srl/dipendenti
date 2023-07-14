@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_hr_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='coach_id']" position="after">
+                    <field name="pwork_cf"/>
+                    <field name="pwork_azienda_id"/>
+                    <field name="pwork_dipendente_id"/>
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                    <field name="interinale"/>
+                </xpath>
+            </field>
+        </record>
+
+</odoo>
