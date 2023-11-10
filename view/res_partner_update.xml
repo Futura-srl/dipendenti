@@ -19,7 +19,7 @@
                 </button>
             </xpath>
             <xpath expr="//field[@name='vat']" position="after">
-                <field name="access_code_employee" attrs="{'invisible': [('is_company','=',True)]}"/>
+                <field name="access_code_employee" attrs="{'invisible': [('is_driver', '!=', True)]}">
             </xpath>
         </field>
     </record>
