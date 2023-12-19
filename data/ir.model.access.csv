@@ -4,4 +4,5 @@ access_pwork_setting,access_pwork_setting,model_pwork_setting,base.group_user,1,
 access_import_data,access_import_data,model_import_data,base.group_user,1,1,1,1
 access_fleet_vehicle,access_fleet_vehicle,model_fleet_vehicle,base.group_user,1,1,1,1
 access_hr_interinale,access_hr_interinale,model_hr_interinale,base.group_user,1,1,1,1
+access_hr_badgespwork,access_hr_badgespwork,model_hr_badgespwork,base.group_user,1,1,1,1
 

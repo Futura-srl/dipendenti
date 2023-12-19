@@ -7,6 +7,18 @@ class ImportData(models.Model):
 
     number_data_import = fields.Integer()
 
+class HrBadges(models.Model):
+    _name = "hr.badgespwork"
+    _description = "Hr badges"
+
+
+    name = fields.Char()
+    active = fields.Boolean()
+    valid_from = fields.Datetime()
+    valid_to = fields.Datetime()
+    pin = fields.Char()
+    hr_id = fields.Many2one('hr.employee')
+    
 class HrUpdate(models.Model):
     _inherit = "hr.employee"
 
@@ -16,6 +28,7 @@ class HrUpdate(models.Model):
     first_name = fields.Char(track_visibility='onchange')
     last_name = fields.Char(track_visibility='onchange')
     interinale = fields.Many2one('hr.interinale', track_visibility='onchange', readonly='True')
+    badge_pwork_ids = fields.One2many('hr.badgespwork', 'hr_id' )
 
 class ResPartnerUpdate(models.Model):
     _inherit = "res.partner"
