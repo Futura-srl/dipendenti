@@ -36,6 +36,7 @@ class ResPartnerUpdate(models.Model):
     first_name = fields.Char(track_visibility='onchange')
     last_name = fields.Char(track_visibility='onchange')
     access_code_employee = fields.Char(string="Employee password", track_visibility='onchange')
+    email_personal = fields.Char()
 
     has_matching_employee = fields.Integer(compute='_compute_has_matching_employee')
 
