@@ -22,7 +22,7 @@
                 <field name="access_code_employee" attrs="{'invisible': [('is_driver', '!=', True)]}"/>
             </xpath>
             <!-- <xpath expr="//field[@name='category_id']" position="before">
-                <field name="email_personal"/>
+                <field name="email_personale"/>
             </xpath> -->
         </field>
     </record>
