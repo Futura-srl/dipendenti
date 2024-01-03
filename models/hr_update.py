@@ -22,6 +22,7 @@ class HrBadges(models.Model):
 class HrUpdate(models.Model):
     _inherit = "hr.employee"
 
+    pwork_uid = fields.Char(track_visibility='onchange', groups='base.group_erp_manager', readonly='True')
     pwork_cf = fields.Char(track_visibility='onchange')
     pwork_azienda_id = fields.Integer(track_visibility='onchange', groups='base.group_erp_manager', readonly='True')
     pwork_dipendente_id = fields.Integer(track_visibility='onchange', groups='base.group_erp_manager', readonly='True')
@@ -82,3 +83,17 @@ class HrInterinale(models.Model):
     name = fields.Char(string="Nome azienda interinale")
     res_partner_id = fields.Many2one('res.partner', string="Contatto azienda interinale")
     res_company_id = fields.Many2one('res.company', string="Azienda interna collegata")
+
+
+class HrInterinaleContatti(models.Model):
+    _name = "hr.interinale.contatti"
+    _description = "Contatti aziende interinali"
+
+    res_partner_id = fields.Many2one('res.partner', string="Contatto azienda interinale")
+    res_cdc_id = fields.Many2one('res.partner', string="Centro di costo", domain=[('type', '=', 'delivery'), ('company_type', '=', 'company')])
+    email = fields.Char()
+
+class HrContract(models.Model):
+    _inherit = "hr.contract"
+
+    pwork_reference = fields.Integer(track_visibility='onchange', groups='base.group_erp_manager', readonly='True')
