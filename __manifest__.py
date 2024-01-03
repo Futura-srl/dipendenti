@@ -14,6 +14,7 @@
         'view/hr_employee_update.xml',
         'view/hr_interinale_view.xml',
         'view/res_partner_update.xml',
+        'view/hr_interinale_contatti_view.xml',
         # Menu
         'view/menu.xml',
     ],
