@@ -18,10 +18,10 @@
     parent="hr_interinale_first_level_menu"
     name="Gestione aziende interinali"/>
 
-    <menuitem id="hr_interinale_contatti_menu_action"
+    <!-- <menuitem id="hr_interinale_contatti_menu_action"
     action="hr_interinale_contatti"
     parent="hr_interinale_first_level_menu"
-    name="Contatti aziende interinali"/>
+    name="Contatti aziende interinali"/> -->
 
     <menuitem id="hr_contract_tree_open_menu_action"
     action="hr_contract_tree_open"

@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="hr.view_employee_form" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='coach_id']" position="after">
-                    <field name="pwork_uid"/>
+                    <!-- <field name="pwork_uid"/> -->
                     <field name="pwork_cf"/>
                     <field name="pwork_azienda_id"/>
                     <field name="pwork_dipendente_id"/>

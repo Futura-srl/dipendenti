@@ -22,7 +22,7 @@ class HrBadges(models.Model):
 class HrUpdate(models.Model):
     _inherit = "hr.employee"
 
-    pwork_uid = fields.Char(track_visibility='onchange', groups='base.group_erp_manager', readonly='True')
+    # pwork_uid = fields.Char(track_visibility='onchange', groups='base.group_erp_manager', readonly='True')
     pwork_cf = fields.Char(track_visibility='onchange')
     pwork_azienda_id = fields.Integer(track_visibility='onchange', groups='base.group_erp_manager', readonly='True')
     pwork_dipendente_id = fields.Integer(track_visibility='onchange', groups='base.group_erp_manager', readonly='True')

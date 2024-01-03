@@ -14,7 +14,7 @@
             <tree string="Contatti aziende interinale" editable="bottom">
                 <field name="res_partner_id"/>
                 <field name="res_cdc_id"/>
-                <field name="email"/>
+                <!-- <field name="email"/> -->
             </tree>
         </field>
     </record>
