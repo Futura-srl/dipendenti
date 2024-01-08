@@ -17,7 +17,7 @@ class HrBadges(models.Model):
     valid_from = fields.Datetime()
     valid_to = fields.Datetime()
     pin = fields.Char()
-    hr_id = fields.Many2one('hr.employee')
+    hr_id = fields.Many2one('hr.employee', string="Dipendenti")
     
 class HrUpdate(models.Model):
     _inherit = "hr.employee"
