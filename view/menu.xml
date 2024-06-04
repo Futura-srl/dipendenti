@@ -27,5 +27,10 @@
     action="hr_contract_tree_open"
     parent="hr.menu_hr_employee_payroll"
     name="Lista contratti"/>
+    
+    <menuitem id="hr_badgespwork_tree_open_menu_action"
+    action="hr_badgespwork"
+    parent="hr.menu_hr_employee_payroll"
+    name="Badges Pwork"/>
 
 </odoo>
