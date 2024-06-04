@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_badgespwork" model="ir.actions.act_window">
+        <field name="name">Badges Pwork</field>
+        <field name="res_model">hr.badgespwork</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <!-- Relativo alla visualizzazione della tabella ad alberlo -->
+    <record id="hr_interinale_contatti_views_tree" model="ir.ui.view">
+        <field name="name">Badges Pwork</field>
+        <field name="model">hr.badgespwork</field>
+        <field name="arch" type="xml">
+            <tree string="Badges Pwork" editable="bottom">
+                <field name="name"/>
+                <field name="active"/>
+                <field name="valid_from"/>
+                <field name="valid_to"/>
+                <field name="pin"/>
+                <field name="hr_id"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="hr_badgespwork_view_search" model="ir.ui.view">
+        <field name="name">hr.badgespwork.view.search</field>
+        <field name="model">hr.badgespwork</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="active"/>
+                <field name="valid_from"/>
+                <field name="valid_to"/>
+                <field name="pin"/>
+                <field name="hr_id"/>
+            </search>
+        </field>
+    </record>
+
+
+</odoo>
