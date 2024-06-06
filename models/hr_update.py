@@ -96,4 +96,4 @@ class HrInterinaleContatti(models.Model):
 class HrContract(models.Model):
     _inherit = "hr.contract"
 
-    pwork_reference = fields.Integer(track_visibility='onchange', groups='base.group_erp_manager', readonly='True')
+    pwork_reference = fields.Integer(track_visibility='onchange')

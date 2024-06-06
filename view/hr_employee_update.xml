@@ -32,26 +32,5 @@
         </record>
 
 
-    <record id="hr_contract_views_tree" model="ir.ui.view">
-        <field name="name">Hr Contratti</field>
-        <field name="model">hr.contract</field>
-        <field name="arch" type="xml">
-            <tree string="Contratti dipendenti">
-                <field name="name"/>
-                <field name="employee_id"/>
-                <field name="date_start"/>
-                <field name="date_end"/>
-                <field name="state"/>
-                <field name="pwork_reference"/>
-            </tree>
-        </field>
-    </record>
-
-
-    <record id="hr_contract_tree_open" model="ir.actions.act_window">
-        <field name="name">Tabella contratti dipendenti</field>
-        <field name="res_model">hr.contract</field>
-        <field name="view_mode">tree,form</field>
-    </record>
 
 </odoo>
