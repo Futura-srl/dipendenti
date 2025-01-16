@@ -9,7 +9,7 @@
             <xpath expr="//div[@name='button_box']" position="inside">
                 <field name="has_matching_employee" invisible="True"/>
                 <button name="action_open_employees" type="object" class="oe_stat_button" icon="fa-id-card-o"
-                        attrs="{'invisible': [('has_matching_employee', '=', 0)]}"
+                        invisible="[('has_matching_employee', '=', 0)]"
                         string="Dipendenti">
                     <div class="o_field_widget o_stat_info">
                         <field name="has_matching_employee" />
@@ -19,7 +19,7 @@
                 </button>
             </xpath>
             <xpath expr="//field[@name='vat']" position="after">
-                <field name="access_code_employee" attrs="{'invisible': [('is_driver', '!=', True)]}"/>
+                <field name="access_code_employee" invisible="[('is_driver', '!=', True)]"/>
             </xpath>
             <xpath expr="//field[@name='category_id']" position="before">
                 <field name="email_personale"/>
