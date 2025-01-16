@@ -30,6 +30,7 @@ class HrUpdate(models.Model):
     last_name = fields.Char(track_visibility='onchange')
     interinale = fields.Many2one('hr.interinale', track_visibility='onchange', readonly='True')
     badge_pwork_ids = fields.One2many('hr.badgespwork', 'hr_id' )
+    address_home_id = fields.Many2one('res.partner')
 
 class ResPartnerUpdate(models.Model):
     _inherit = "res.partner"
@@ -38,6 +39,7 @@ class ResPartnerUpdate(models.Model):
     last_name = fields.Char(track_visibility='onchange')
     access_code_employee = fields.Char(string="Employee password", track_visibility='onchange')
     email_personale = fields.Char()
+
 
     has_matching_employee = fields.Integer(compute='_compute_has_matching_employee')
 
