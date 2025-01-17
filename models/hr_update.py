@@ -55,7 +55,7 @@ class ResPartnerUpdate(models.Model):
             ('active', 'in', [True, False])
         ])
             partner.has_matching_employee = matching_employees
-            _logger.info(partner.has_matching)
+            _logger.info(partner.has_matching_employee)
 
 
     def action_open_employees(self):
