@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="hr_contract.hr_contract_view_form" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='date_end']" position="after">
-                    <field name="pwork_reference" groups="__export__.res_groups_137_2440cc2b"/>
+                    <field name="pwork_reference" groups="Diritti.developer_group"/>
                 </xpath>
             </field>
         </record>

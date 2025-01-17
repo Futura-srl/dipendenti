@@ -28,6 +28,9 @@
                         </field>
                     </page>
                 </xpath>
+                <xpath expr="//label[@name='private_street']" position="after">
+                    <field name="address_home_id"/>
+                </xpath>
             </field>
         </record>
 

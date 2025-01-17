@@ -1,4 +1,9 @@
 from odoo import fields, models
+import logging
+from datetime import datetime, time, timedelta
+
+_logger = logging.getLogger(__name__)
+now = datetime.now()
 
 
 class ImportData(models.Model):
@@ -50,6 +55,7 @@ class ResPartnerUpdate(models.Model):
             ('active', 'in', [True, False])
         ])
             partner.has_matching_employee = matching_employees
+            _logger.info(partner.has_matching)
 
 
     def action_open_employees(self):
