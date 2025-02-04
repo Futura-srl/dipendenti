@@ -15,6 +15,7 @@
                 <field name="name"/>
                 <field name="res_company_id"/>
                 <field name="res_partner_id"/>
+                <field name="pwork_az_id"/>
             </tree>
         </field>
     </record>

@@ -18,6 +18,7 @@
         'view/hr_interinale_contatti_view.xml',
         'view/portal_view.xml',
         'view/hr_badgespwork_view.xml',
+        'view/res_companies.xml',
         # Menu
         'view/menu.xml',
     ],

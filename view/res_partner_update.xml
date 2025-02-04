@@ -20,7 +20,7 @@
             </xpath>
             <xpath expr="//div[@name='vat_vies_container']" position="after">
                 <div>
-                    <field name="access_code_employee" invisible="is_driver != True"/>
+                    <field name="access_code_employee" invisible="True"/>
                 </div>
             </xpath>
             <xpath expr="//field[@name='category_id']" position="before">
@@ -35,6 +35,7 @@
         <field name="inherit_id" ref="gtms.res_partner_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='is_driver']" position="after">
+                <field name="login_user" invisible="is_driver != True"/>
                 <field name="access_code_employee" invisible="is_driver != True"/>
             </xpath>
         </field>
