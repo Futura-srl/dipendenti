@@ -138,7 +138,7 @@ class FleetVehicle(models.Model):
     _inherit = "fleet.vehicle"
 
     stato_veicolo = fields.Selection([('ATTIVO', 'ATTIVO'),('IN ARRIVO', 'IN ARRIVO'),('INCIDENTATO','INCIDENTATO'),('RESTITUITO','RESTITUITO')], default="ATTIVO")
-    euro = fields.Char()
+    #euro = fields.Char()
 
 class HrInterinale(models.Model):
     _name = "hr.interinale"
