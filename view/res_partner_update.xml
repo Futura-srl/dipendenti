@@ -18,11 +18,11 @@
                     <field name="id" invisible="1"/>
                 </button>
             </xpath>
-            <xpath expr="//div[@name='vat_vies_container']" position="after">
-                <div>
-                    <field name="access_code_employee" invisible="True"/>
-                </div>
-            </xpath>
+<!--            <xpath expr="//div[@name='vat_vies_container']" position="after">-->
+<!--                <div>-->
+<!--                    <field name="access_code_employee" invisible="True"/>-->
+<!--                </div>-->
+<!--            </xpath>-->
             <xpath expr="//field[@name='category_id']" position="before">
                 <field name="email_personale"/>
             </xpath>
@@ -36,7 +36,8 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='is_driver']" position="after">
                 <field name="login_user" invisible="is_driver != True"/>
-                <field name="access_code_employee" invisible="is_driver != True"/>
+                <field name="access_code_employee" invisible="is_driver != True" readonly="1" groups="!base.group_system"/>
+                <field name="access_code_employee" invisible="is_driver != True" groups="base.group_system"/>
             </xpath>
         </field>
     </record>
