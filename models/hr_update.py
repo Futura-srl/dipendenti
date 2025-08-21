@@ -100,7 +100,7 @@ class ResPartnerUpdate(models.Model):
 
     def _compute_get_login_user(self):
         for partner in self:
-            partner.login_user = self.env['res.users'].search([('partner_id', '=', self.id)]).login
+            partner.login_user = self.env['res.users'].search([('partner_id', '=', self.id)], limit=1).login
 
     has_matching_employee = fields.Integer(compute='_compute_has_matching_employee')
 
