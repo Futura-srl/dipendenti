@@ -24,7 +24,7 @@ class HrBadges(models.Model):
     valid_to = fields.Datetime()
     pin = fields.Char()
     hr_id = fields.Many2one('hr.employee', string="Dipendenti")
-    
+
 class HrUpdate(models.Model):
     _inherit = "hr.employee"
 
@@ -107,7 +107,7 @@ class ResPartnerUpdate(models.Model):
     def _compute_has_matching_employee(self):
         for partner in self:
             matching_employees = self.env['hr.employee'].search_count([
-            ('address_home_id.id', '=', self.id),
+            ('address_home_id', '=', partner.id),
             ('active', 'in', [True, False])
         ])
             partner.has_matching_employee = matching_employees
