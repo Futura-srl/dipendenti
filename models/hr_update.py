@@ -39,6 +39,7 @@ class HrUpdate(models.Model):
     address_home_id = fields.Many2one('res.partner')
 
 
+
     def _create_work_contacts(self):
         # Non crea il res.partner se il context contiene 'skip_work_contact'
         if self.env.context.get('skip_work_contact'):
@@ -89,6 +90,7 @@ class HrUpdate(models.Model):
             department = self.env['hr.department'].create({'name': department_name, 'company_id': company_id})
             return department.id
 
+
 class ResPartnerUpdate(models.Model):
     _inherit = "res.partner"
 
@@ -100,7 +102,7 @@ class ResPartnerUpdate(models.Model):
 
     def _compute_get_login_user(self):
         for partner in self:
-            partner.login_user = self.env['res.users'].search([('partner_id', '=', self.id)], limit=1).login
+            partner.login_user = self.env['res.users'].search([('partner_id', '=', partner.id)], limit=1).login
 
     has_matching_employee = fields.Integer(compute='_compute_has_matching_employee')
 
