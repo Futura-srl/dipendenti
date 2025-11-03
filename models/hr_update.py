@@ -24,6 +24,8 @@ class HrBadges(models.Model):
     valid_to = fields.Datetime()
     pin = fields.Char()
     hr_id = fields.Many2one('hr.employee', string="Dipendenti")
+    contract_ids = fields.Many2many('hr.contract', string="Contratti associati")
+
 
 class HrUpdate(models.Model):
     _inherit = "hr.employee"
@@ -99,6 +101,7 @@ class ResPartnerUpdate(models.Model):
     login_user = fields.Char(compute='_compute_get_login_user')
     access_code_employee = fields.Char(string="Employee password", track_visibility='onchange')
     email_personale = fields.Char()
+    is_employee = fields.Boolean(string='Is Employee', default=False)
 
     def _compute_get_login_user(self):
         for partner in self:
@@ -124,7 +127,9 @@ class ResPartnerUpdate(models.Model):
             'res_model': 'hr.employee',
             'view_mode': 'kanban,tree,form',
             'domain': ['|', '&', ('address_home_id', '=', self.id), ('active', '=', False), '&', ('address_home_id', '=', self.id), ('active', '=', True)],
-
+            'context': {
+                'default_address_home_id': self.id,
+            },
 
 
         }

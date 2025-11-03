@@ -18,6 +18,7 @@
                 <field name="valid_to"/>
                 <field name="pin"/>
                 <field name="hr_id"/>
+                <field name="contract_ids"  widget="many2many_tags"/>
             </tree>
         </field>
     </record>
@@ -34,6 +35,7 @@
                 <field name="valid_to"/>
                 <field name="pin"/>
                 <field name="hr_id"/>
+                <field name="contract_ids"  widget="many2many_tags"/>
             </search>
         </field>
     </record>

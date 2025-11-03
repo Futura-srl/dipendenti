@@ -8,8 +8,9 @@
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_open_employees']" position="replace">
                 <field name="has_matching_employee" invisible="True"/>
+                <field name="is_employee" invisible="True"/>
                 <button name="action_open_employees" type="object" class="oe_stat_button" icon="fa-id-card-o"
-                        invisible="has_matching_employee == 0"
+                        invisible="is_employee == False"
                         string="Dipendenti">
                     <div class="o_field_widget o_stat_info">
                         <span class="o_stat_value"><field name="has_matching_employee" field_id="has_matching_employee"/></span>
