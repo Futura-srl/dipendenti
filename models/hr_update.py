@@ -129,6 +129,11 @@ class ResPartnerUpdate(models.Model):
             'domain': ['|', '&', ('address_home_id', '=', self.id), ('active', '=', False), '&', ('address_home_id', '=', self.id), ('active', '=', True)],
             'context': {
                 'default_address_home_id': self.id,
+                'default_first_name': self.firstname,
+                'default_last_name': self.lastname,
+                'default_work_email': self.email,
+                'default_pwork_cf': self.fiscalcode,
+                'default_private_email': self.email_personale,
             },
 
 
