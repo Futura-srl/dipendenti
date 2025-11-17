@@ -43,10 +43,8 @@ class HrUpdate(models.Model):
 
 
     def _create_work_contacts(self):
-        # Non crea il res.partner se il context contiene 'skip_work_contact'
-        if self.env.context.get('skip_work_contact'):
-            return
-        return super()._create_work_contacts()
+        # Non crea il res.partner una volta creato il dipendente
+        return False
 
 
     @api.model_create_multi
