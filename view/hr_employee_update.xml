@@ -7,13 +7,13 @@
             <field name="inherit_id" ref="hr.view_employee_form" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='coach_id']" position="after">
-                    <field name="pwork_uid"/>
-                    <field name="pwork_cf"/>
-                    <field name="pwork_azienda_id"/>
-                    <field name="pwork_dipendente_id"/>
-                    <field name="first_name"/>
-                    <field name="last_name"/>
-                    <field name="interinale"/>
+                    <field name="pwork_uid" groups="Diritti.developer_group"/>
+                    <field name="pwork_cf" groups="Diritti.developer_group"/>
+                    <field name="pwork_azienda_id" groups="Diritti.developer_group"/>
+                    <field name="pwork_dipendente_id" groups="Diritti.developer_group"/>
+                    <field name="first_name" groups="Diritti.developer_group"/>
+                    <field name="last_name" groups="Diritti.developer_group"/>
+                    <field name="interinale" groups="Diritti.developer_group"/>
                 </xpath>
                 <xpath expr="//notebook" position="inside">
                     <page name="hr_badgespwork" string="HR Badges" groups="hr.group_hr_user">
@@ -27,6 +27,9 @@
                             </tree>
                         </field>
                     </page>
+                </xpath>
+                <xpath expr="//label[@for='private_street']" position="before">
+                    <field name="address_home_id"/>
                 </xpath>
             </field>
         </record>

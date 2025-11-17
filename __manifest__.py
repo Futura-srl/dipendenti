@@ -1,10 +1,10 @@
 {
     'name': 'dipendenti',
-    'version': '16.0.0.1',
+    'version': '17.0.0.2',
     'author': "Luca Cocozza",
     'application': True,
     'description': "Aggiunge nome e cognome al res.partner e al hr.employee, mostra un bottone di collegamento hai hr.employee associati al res.partner",
-    'depends': ['hr', 'fleet', 'gtms_fleet_organization', 'fleet_limited_traffic_zone', 'gtms_fleet_service_with_deduction', 'fleet_replacement', 'portal'],
+    'depends': ['hr', 'fleet', 'gtms_fleet_organization', 'fleet_limited_traffic_zone', 'gtms_fleet_service_with_deduction', 'fleet_replacement', 'portal', 'hr_contract', 'Diritti'],
     'data': [
         # # Settaggi per accesso ai contenuti
         'data/ir.model.access.csv',
@@ -18,6 +18,7 @@
         'view/hr_interinale_contatti_view.xml',
         'view/portal_view.xml',
         'view/hr_badgespwork_view.xml',
+        'view/res_companies.xml',
         # Menu
         'view/menu.xml',
     ],

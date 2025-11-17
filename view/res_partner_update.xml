@@ -6,27 +6,42 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="hr.res_partner_view_form" />
         <field name="arch" type="xml">
-            <xpath expr="//div[@name='button_box']" position="inside">
+            <xpath expr="//button[@name='action_open_employees']" position="replace">
                 <field name="has_matching_employee" invisible="True"/>
+                <field name="is_employee" invisible="True"/>
                 <button name="action_open_employees" type="object" class="oe_stat_button" icon="fa-id-card-o"
-                        attrs="{'invisible': [('has_matching_employee', '=', 0)]}"
+                        invisible="is_employee == False"
                         string="Dipendenti">
                     <div class="o_field_widget o_stat_info">
-                        <field name="has_matching_employee" />
-                        <span class="o_stat_text">Dipendenti</span>
+                        <span class="o_stat_value"><field name="has_matching_employee" field_id="has_matching_employee"/></span>
+                        <span class="o_stat_text">Employee</span>
                     </div>
                     <field name="id" invisible="1"/>
                 </button>
             </xpath>
-            <xpath expr="//field[@name='vat']" position="after">
-                <field name="access_code_employee" attrs="{'invisible': [('is_driver', '!=', True)]}"/>
-            </xpath>
+<!--            <xpath expr="//div[@name='vat_vies_container']" position="after">-->
+<!--                <div>-->
+<!--                    <field name="access_code_employee" invisible="True"/>-->
+<!--                </div>-->
+<!--            </xpath>-->
             <xpath expr="//field[@name='category_id']" position="before">
                 <field name="email_personale"/>
             </xpath>
         </field>
     </record>
 
+    <record id="gtms_res_partner_form_inherit_2" model="ir.ui.view">
+        <field name="name">res.partner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="gtms.res_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_driver']" position="after">
+                <field name="login_user" invisible="is_driver != True"/>
+                <field name="access_code_employee" invisible="is_driver != True" readonly="1" groups="!base.group_system"/>
+                <field name="access_code_employee" invisible="is_driver != True" groups="base.group_system"/>
+            </xpath>
+        </field>
+    </record>
 
 
 </odoo>
