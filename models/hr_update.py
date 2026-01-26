@@ -36,7 +36,7 @@ class HrUpdate(models.Model):
     pwork_dipendente_id = fields.Integer(track_visibility='onchange', groups='base.group_erp_manager', readonly='True')
     first_name = fields.Char(track_visibility='onchange')
     last_name = fields.Char(track_visibility='onchange')
-    interinale = fields.Many2one('hr.interinale', track_visibility='onchange', readonly='True')
+    interinale = fields.Many2one('hr.interinale', readonly='True')
     badge_pwork_ids = fields.One2many('hr.badgespwork', 'hr_id' )
     address_home_id = fields.Many2one('res.partner')
 
