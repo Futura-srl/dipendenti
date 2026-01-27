@@ -29,7 +29,18 @@
                     </page>
                 </xpath>
                 <xpath expr="//label[@for='private_street']" position="before">
-                    <field name="address_home_id"/>
+                    <field name="address_home_id" invisible="True"/>
+                    <field name="address_home_id" groups="Diritti.developer_group"/>
+                    <field name="address_home_id" readonly="True" groups="!Diritti.developer_group"/>
+                </xpath>
+                <xpath expr="//div[@class='o_address_format']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//label[@for='private_street']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='private_email']" position="attributes">
+                    <attribute name="readonly">True</attribute>
                 </xpath>
             </field>
         </record>
