@@ -22,7 +22,7 @@ class HrBadges(models.Model):
     active = fields.Boolean()
     valid_from = fields.Datetime()
     valid_to = fields.Datetime()
-    pin = fields.Char()
+    pin = fields.Char(default="0000")
     hr_id = fields.Many2one('hr.employee', string="Dipendenti")
     contract_ids = fields.Many2many('hr.contract', string="Contratti associati")
 
