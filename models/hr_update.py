@@ -26,6 +26,14 @@ class HrBadges(models.Model):
     hr_id = fields.Many2one('hr.employee', string="Dipendenti")
     contract_ids = fields.Many2many('hr.contract', string="Contratti associati")
 
+    # Modifico la funzione write affinche quando viene modificato un badge, venga aggiornato anche il campo last_update_badge del contratto associato
+    def write(self, vals):
+        res = super(HrBadges, self).write(vals)
+        for badge in self:
+            for contract in badge.contract_ids:
+                contract.last_update_badge = fields.Datetime.now()
+        return res
+
 
 class HrUpdate(models.Model):
     _inherit = "hr.employee"
@@ -172,6 +180,7 @@ class HrContract(models.Model):
     _inherit = "hr.contract"
 
     pwork_reference = fields.Integer(track_visibility='onchange')
+    last_update_badge = fields.Datetime()
 
 
 class Company(models.Model):
