@@ -4,6 +4,7 @@
         <field name="name">Badges Pwork</field>
         <field name="res_model">hr.badgespwork</field>
         <field name="view_mode">tree</field>
+        <field name="context">{'active_test': False}</field>
     </record>
 
     <!-- Relativo alla visualizzazione della tabella ad alberlo -->
@@ -18,7 +19,7 @@
                 <field name="valid_to"/>
                 <field name="pin"/>
                 <field name="hr_id"/>
-                <field name="contract_ids"  widget="many2many_tags"/>
+                <field name="contract_ids"  widget="many2many_tags" optional="hide"/>
             </tree>
         </field>
     </record>

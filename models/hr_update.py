@@ -28,10 +28,14 @@ class HrBadges(models.Model):
 
     # Modifico la funzione write affinche quando viene modificato un badge, venga aggiornato anche il campo last_update_badge del contratto associato
     def write(self, vals):
-        res = super(HrBadges, self).write(vals)
-        for badge in self:
-            for contract in badge.contract_ids:
-                contract.last_update_badge = fields.Datetime.now()
+        # Scrivo badge normalmente
+        res = super().write(vals)
+
+        # Aggiorna contratti solo se non siamo nel contesto di aggiornamento dei badge da contratto
+        if not self.env.context.get('skip_contract_update'):
+            for badge in self:
+                for contract in badge.contract_ids:
+                    contract.with_context(skip_badge_update=True).last_update_badge = fields.Datetime.now()
         return res
 
 
