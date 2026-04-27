@@ -140,7 +140,10 @@ class ResPartnerUpdate(models.Model):
             'context': {
                 'default_address_home_id': self.id,
                 'default_first_name': self.firstname,
+                'default_firstname': self.firstname,
                 'default_last_name': self.lastname,
+                'default_lastname': self.lastname,
+                'default_name': self.lastname + " " + self.firstname,
                 'default_work_email': self.email,
                 'default_pwork_cf': self.fiscalcode,
                 'default_private_email': self.email_personale,
