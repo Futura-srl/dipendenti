@@ -2,6 +2,7 @@ from odoo import fields, models, api, _
 import logging, re, random
 from datetime import datetime, time, timedelta
 from markupsafe import Markup
+from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 now = datetime.now()
@@ -151,6 +152,25 @@ class ResPartnerUpdate(models.Model):
 
 
         }
+
+
+    def generate_new_random_password_login_employee(self):
+        # Genero una nuova password che verrà salvata in access_code_employee e poi aggiunta anche all'user collegato
+        # Controllo se il dipendente ha user di portale o interno. Nel caso fosse un interno mostro un messaggio di errore
+        for user in self.user_ids:
+            if user.has_group('base.group_user'):
+                raise UserError(_("Non puoi modificare la password di un utente di backend."))
+            if not self.is_employee:
+                raise UserError(_("Non puoi modificare la password di un utente che non sia un dipendente del gruppo Futura"))
+
+        password = ''.join(random.choices('0123456789', k=6))
+        self.write({
+            'access_code_employee': password,
+        })
+        for user in self.user_ids:
+            user.write({
+                'password': password
+            })
 
 
 class PworkSetting(models.Model):
