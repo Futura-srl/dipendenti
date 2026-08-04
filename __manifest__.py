@@ -1,6 +1,6 @@
 {
     'name': 'dipendenti',
-    'version': '17.0.0.4',
+    'version': '19.0.0.4',
     'author': "Luca Cocozza",
     'application': True,
     'description': "Aggiunge nome e cognome al res.partner e al hr.employee, mostra un bottone di collegamento hai hr.employee associati al res.partner",

@@ -136,7 +136,7 @@ class ResPartnerUpdate(models.Model):
             'name': ('Dipendenti relativi'),
             'type': 'ir.actions.act_window',
             'res_model': 'hr.employee',
-            'view_mode': 'kanban,tree,form',
+            'view_mode': 'kanban,list,form',
             'domain': ['|', '&', ('address_home_id', '=', self.id), ('active', '=', False), '&', ('address_home_id', '=', self.id), ('active', '=', True)],
             'context': {
                 'default_address_home_id': self.id,

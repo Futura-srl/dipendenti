@@ -3,7 +3,7 @@
     <record id="hr_interinale_contatti" model="ir.actions.act_window">
         <field name="name">Contatti aziende interinale</field>
         <field name="res_model">hr.interinale.contatti</field>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">list</field>
     </record>
 
     <!-- Relativo alla visualizzazione della tabella ad alberlo -->
@@ -11,11 +11,11 @@
         <field name="name">Contatti aziende interinale</field>
         <field name="model">hr.interinale.contatti</field>
         <field name="arch" type="xml">
-            <tree string="Contatti aziende interinale" editable="bottom">
+            <list string="Contatti aziende interinale" editable="bottom">
                 <field name="res_partner_id"/>
                 <field name="res_cdc_id"/>
                 <field name="email"/>
-            </tree>
+            </list>
         </field>
     </record>
 
