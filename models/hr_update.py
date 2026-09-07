@@ -25,7 +25,7 @@ class HrBadges(models.Model):
     valid_to = fields.Datetime()
     pin = fields.Char(default="0000")
     hr_id = fields.Many2one('hr.employee', string="Dipendenti")
-    contract_ids = fields.Many2many('hr.contract', string="Contratti associati")
+    contract_ids = fields.Many2many('hr.version', string="Contratti associati")
 
     # Modifico la funzione write affinche quando viene modificato un badge, venga aggiornato anche il campo last_update_badge del contratto associato
     def write(self, vals):
@@ -113,6 +113,11 @@ class ResPartnerUpdate(models.Model):
     access_code_employee = fields.Char(string="Employee password", track_visibility='onchange')
     email_personale = fields.Char()
     is_employee = fields.Boolean(string='Is Employee', default=False)
+
+    def _get_frontend_writable_fields(self):
+        # In 19 il portale scrive sul partner solo i campi elencati qui: senza questa riga
+        # l'email personale digitata nel form verrebbe scartata senza errore.
+        return super()._get_frontend_writable_fields() | {'email_personale'}
 
     def _compute_get_login_user(self):
         for partner in self:
@@ -203,11 +208,26 @@ class HrInterinaleContatti(models.Model):
     res_cdc_id = fields.Many2one('res.partner', string="Centro di costo", domain=[('type', '=', 'delivery'), ('company_type', '=', 'company')])
     email = fields.Char()
 
-class HrContract(models.Model):
-    _inherit = "hr.contract"
+class HrVersion(models.Model):
+    _inherit = "hr.version"
 
     pwork_reference = fields.Integer(track_visibility='onchange')
     last_update_badge = fields.Datetime()
+
+    # In Odoo 19 hr.contract non esiste piu' e hr.version, che lo sostituisce, non ha uno
+    # stato: al suo posto ci sono is_current / is_past / is_future / is_in_contract, calcolati
+    # dalle date. Le date pero' non sanno esprimere 'draft', 'cancel' e il 'prorogato' che
+    # aggiunge hr1, che sono informazioni a se': il campo va quindi ridefinito qui, con gli
+    # stessi valori e lo stesso nome della 17, cosi' il codice che ci scrive sopra (i wizard di
+    # hr1_update, il cron di batch_manager) continua a funzionare e la colonna esistente in
+    # produzione resta utilizzabile.
+    state = fields.Selection([
+        ('draft', 'Nuovo'),
+        ('open', 'In corso'),
+        ('close', 'Concluso'),
+        ('cancel', 'Annullato'),
+    ], string='Stato', copy=False, tracking=True, default='draft',
+        help='Stato del contratto')
 
 
 class Company(models.Model):

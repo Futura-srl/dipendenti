@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="portal_my_details_fields" inherit_id="portal.portal_my_details_fields" name="Welcome Message">
-        <xpath expr="//div//input[@name='name']" position="replace">
-            <input type="text" name="name" t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}" t-att-value="name or partner.name" readonly="1"/>
+    <!-- In Odoo 19 il portale e' stato riscritto: portal.portal_my_details_fields non esiste
+         piu' e i campi del contatto stanno in portal.address_form_fields, che legge da
+         partner_sudo e non ha piu' il dizionario `error` (la validazione e' passata al JS). -->
+    <template id="portal_my_details_fields" inherit_id="portal.address_form_fields" name="Welcome Message">
+        <xpath expr="//input[@name='name']" position="attributes">
+            <attribute name="readonly">1</attribute>
         </xpath>
-        <xpath expr="//div[input[@name='email']]" position="replace">
-            <div t-attf-class="mb-3 #{error.get('email') and 'o_has_error' or ''} col-xl-6">
-                <label class="col-form-label" for="email">Email</label>
-                <input type="email" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="email or partner.email" readonly="1"/>
-            </div>
-            <div class="clearfix" />
-            <div t-attf-class="mb-3 #{error.get('email_personale') and 'o_has_error' or ''} col-xl-6">
-                <label class="col-form-label" for="email_personale">Email personale</label>
-                <input type="email" name="email_personale" t-attf-class="form-control #{error.get('email_personale') and 'is-invalid' or ''}" t-att-value="email_personale or partner.email_personale" />
+        <xpath expr="//input[@name='email']" position="attributes">
+            <attribute name="readonly">1</attribute>
+        </xpath>
+        <xpath expr="//div[@id='div_email']" position="after">
+            <div id="div_email_personale" class="col-lg-6 mb-2">
+                <label class="col-form-label" for="o_email_personale">Email personale</label>
+                <input id="o_email_personale" type="email" name="email_personale"
+                       t-att-value="partner_sudo.email_personale" class="form-control"/>
             </div>
         </xpath>
     </template>
 </odoo>
-

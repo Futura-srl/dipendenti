@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <!-- In Odoo 19 la form del contratto non esiste piu': hr.version ha solo viste lista,
+         ricerca, grafico e pivot, e i campi contrattuali si compilano dalla scheda del
+         dipendente (pagina Payroll, gruppo "contract"). I campi custom vanno quindi
+         agganciati li'. -->
     <record id="view_hr_contract_form_inherit_1" model="ir.ui.view">
-            <field name="name">hr.contract</field>
-            <field name="model">hr.contract</field>
-            <field name="inherit_id" ref="hr_contract.hr_contract_view_form" />
+            <field name="name">hr.employee.form.dipendenti</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form" />
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='date_end']" position="after">
+                <xpath expr="//group[@name='contract']" position="inside">
+                    <field name="state"/>
                     <field name="pwork_reference" groups="Diritti.developer_group"/>
                 </xpath>
             </field>
@@ -15,7 +20,7 @@
 
     <record id="hr_contract_views_tree" model="ir.ui.view">
         <field name="name">Hr Contratti</field>
-        <field name="model">hr.contract</field>
+        <field name="model">hr.version</field>
         <field name="arch" type="xml">
             <list string="Contratti dipendenti">
                 <field name="name"/>
@@ -31,7 +36,7 @@
 
     <record id="hr_contract_tree_open" model="ir.actions.act_window">
         <field name="name">Tabella contratti dipendenti</field>
-        <field name="res_model">hr.contract</field>
+        <field name="res_model">hr.version</field>
         <field name="view_mode">list,form</field>
     </record>
 
