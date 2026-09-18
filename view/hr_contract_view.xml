@@ -11,8 +11,28 @@
             <field name="inherit_id" ref="hr.view_employee_form" />
             <field name="arch" type="xml">
                 <xpath expr="//group[@name='contract']" position="inside">
-                    <field name="state"/>
-                    <field name="pwork_reference" groups="Diritti.developer_group"/>
+                    <field name="contract_state"/>
+                </xpath>
+                <!-- L'elenco dei contratti del dipendente: cliccando una riga si apre la form
+                     del contratto (form_view_ref), dove stanno tutti i dati di dettaglio.
+                     Senza il riferimento esplicito Odoo aprirebbe la form dei modelli di
+                     contratto, che non contiene i campi custom. -->
+                <xpath expr="//page[@name='payroll_information']" position="inside">
+                    <separator string="Contratti"/>
+                    <!-- senza readonly: un one2many in sola lettura apre anche i record in
+                         sola lettura, e i contratti non si potevano piu' modificare.
+                         create="0" evita che si creino contratti a mano da qui: nascono dal
+                         wizard di proroga o dal flusso standard. -->
+                    <field name="version_ids" nolabel="1"
+                           context="{'form_view_ref': 'dipendenti.hr_contract_views_form'}">
+                        <list string="Contratti" create="0">
+                            <field name="name"/>
+                            <field name="contract_date_start" string="Dal"/>
+                            <field name="contract_date_end" string="Al"/>
+                            <field name="state"/>
+                            <field name="pwork_reference" optional="hide" groups="Diritti.developer_group"/>
+                        </list>
+                    </field>
                 </xpath>
             </field>
         </record>
@@ -34,10 +54,69 @@
     </record>
 
 
+    <!-- In 19 hr.version non ha una form propria: senza questa, aprendo un contratto dalla
+         lista Odoo ripiega sulla form dei modelli di contratto (hr.contract.template.form),
+         che non contiene nessuno dei campi custom. -->
+    <record id="hr_contract_views_form" model="ir.ui.view">
+        <field name="name">hr.version.form.dipendenti</field>
+        <field name="model">hr.version</field>
+        <field name="arch" type="xml">
+            <form string="Contratto">
+                <header>
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}"
+                           statusbar_visible="draft,open,close"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Contratto"/>
+                        <h1><field name="name" placeholder="Riferimento del contratto"/></h1>
+                    </div>
+                    <group>
+                        <group name="contract_employee" string="Dipendente">
+                            <field name="employee_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="date_version"/>
+                        </group>
+                        <group name="contract_period" string="Periodo">
+                            <field name="contract_date_start"/>
+                            <field name="contract_date_end"/>
+                            <field name="contract_type_id" options="{'no_create': True}"/>
+                            <field name="resource_calendar_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="note" string="Note">
+                            <field name="additional_note" placeholder="Note sul contratto"/>
+                            <group>
+                                <field name="pwork_reference" groups="Diritti.developer_group"/>
+                                <field name="last_update_badge" readonly="1"
+                                       groups="Diritti.developer_group"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
     <record id="hr_contract_tree_open" model="ir.actions.act_window">
         <field name="name">Tabella contratti dipendenti</field>
         <field name="res_model">hr.version</field>
         <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="hr_contract_tree_open_list" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="hr_contract_views_tree"/>
+        <field name="act_window_id" ref="hr_contract_tree_open"/>
+    </record>
+
+    <record id="hr_contract_tree_open_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="hr_contract_views_form"/>
+        <field name="act_window_id" ref="hr_contract_tree_open"/>
     </record>
 
 </odoo>

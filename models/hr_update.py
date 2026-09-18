@@ -43,15 +43,23 @@ class HrBadges(models.Model):
 class HrUpdate(models.Model):
     _inherit = "hr.employee"
 
-    pwork_uid = fields.Char(track_visibility='onchange', groups='base.group_erp_manager', readonly='True')
-    pwork_cf = fields.Char(track_visibility='onchange')
-    pwork_azienda_id = fields.Integer(track_visibility='onchange', groups='base.group_erp_manager', readonly='True')
-    pwork_dipendente_id = fields.Integer(track_visibility='onchange', groups='base.group_erp_manager', readonly='True')
+    # I dati Pwork appartengono al singolo contratto, non al dipendente: in produzione
+    # divergono su ~900 contratti (pwork_uid, pwork_azienda_id, pwork_dipendente_id) e su 323
+    # per il codice fiscale. In 19 vivono quindi solo su hr.version (li definisce hr1): la
+    # delega _inherits fa si' che employee.pwork_uid legga il contratto della versione
+    # selezionata, invece di un secondo valore che poteva contraddirlo.
     first_name = fields.Char(track_visibility='onchange')
     last_name = fields.Char(track_visibility='onchange')
     interinale = fields.Many2one('hr.interinale', readonly='True')
     badge_pwork_ids = fields.One2many('hr.badgespwork', 'hr_id' )
     address_home_id = fields.Many2one('res.partner')
+
+    # hr.employee ha gia' un campo `state` proprio (lo definisce il connettore di Stesi:
+    # active / enabled), quindi la delega _inherits verso hr.version non ne espone lo stato
+    # del contratto: `employee.state` NON e' lo stato contrattuale. Per averlo sulla scheda
+    # del dipendente serve questo related esplicito.
+    contract_state = fields.Selection(related='version_id.state', readonly=False,
+                                      string="Stato contratto")
 
 
 
@@ -149,7 +157,9 @@ class ResPartnerUpdate(models.Model):
                 'default_firstname': self.firstname,
                 'default_last_name': self.lastname,
                 'default_lastname': self.lastname,
-                'default_name': self.lastname + " " + self.firstname,
+                # cognome e nome possono essere vuoti (valgono False): concatenarli
+                # direttamente faceva fallire il bottone con TypeError
+                'default_name': " ".join(filter(None, [self.lastname, self.firstname])),
                 'default_work_email': self.email,
                 'default_pwork_cf': self.fiscalcode,
                 'default_private_email': self.email_personale,
@@ -228,6 +238,15 @@ class HrVersion(models.Model):
         ('cancel', 'Annullato'),
     ], string='Stato', copy=False, tracking=True, default='draft',
         help='Stato del contratto')
+
+    # Stessa storia di `state`: campo standard di hr.contract nella 17, sparito con il
+    # modello. Lo usano hr1_update (che ne cambiava il default) e il cron di batch_manager
+    # per segnalare i contratti in scadenza, quindi sta qui alla base della catena.
+    kanban_state = fields.Selection([
+        ('normal', 'Grey'),
+        ('done', 'Green'),
+        ('blocked', 'Red'),
+    ], string='Kanban State', default='done', tracking=True, copy=False)
 
 
 class Company(models.Model):

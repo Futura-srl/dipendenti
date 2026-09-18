@@ -9,10 +9,8 @@
                 <!-- In 19 la form del dipendente non espone piu' coach_id: i campi si
                      agganciano al Manager (parent_id), nello stesso gruppo "Work". -->
                 <xpath expr="//field[@name='parent_id']" position="after">
-                    <field name="pwork_uid" groups="Diritti.developer_group"/>
-                    <field name="pwork_cf" groups="Diritti.developer_group"/>
-                    <field name="pwork_azienda_id" groups="Diritti.developer_group"/>
-                    <field name="pwork_dipendente_id" groups="Diritti.developer_group"/>
+                    <!-- I campi Pwork sono del contratto: li mostra la pagina "Pwork data"
+                         di hr1, sulla versione selezionata. -->
                     <field name="first_name" groups="Diritti.developer_group"/>
                     <field name="last_name" groups="Diritti.developer_group"/>
                     <field name="interinale" groups="Diritti.developer_group"/>
