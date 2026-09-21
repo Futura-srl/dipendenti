@@ -21,8 +21,9 @@ class HrBadges(models.Model):
 
     name = fields.Char()
     active = fields.Boolean()
-    valid_from = fields.Datetime()
-    valid_to = fields.Datetime()
+    # Solo data: per Pwork il badge vale per tutto il giorno, estremi inclusi
+    valid_from = fields.Date()
+    valid_to = fields.Date()
     pin = fields.Char(default="0000")
     hr_id = fields.Many2one('hr.employee', string="Dipendenti")
     contract_ids = fields.Many2many('hr.contract', string="Contratti associati")
